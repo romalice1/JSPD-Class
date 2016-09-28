@@ -1,0 +1,74 @@
+BUILDING AUTO FROM  PRUIS.TXT FILE AND PRINTING
+-----------------------------------------------
+Car Make: Toyota
+Car Model: Prius
+Car Style: Two
+Base price: $20000.0
+Final price: $20825.0
+
+Color
+-Mica-Blue: $325.0
+-Light-Green: $300.0
+
+Garage Door Transmitter
+-Yes: $0.0
+
+Power Moonroof
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+
+UPDATING THE OPTION PRICE OC COLOR FROM $325 TO $100
+----------------------------------------------------
+Car Make: Toyota
+Car Model: Prius
+Car Style: Two
+Base price: $20000.0
+Final price: $20825.0
+
+Color
+-Mica-Blue: $100.0
+-Light-Green: $300.0
+
+Garage Door Transmitter
+-Yes: $0.0
+
+Power Moonroof
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+
+
+UPDATING THE OPTIONSET FROM COLOR TO COLOUR
+-------------------------------------------
+Car Make: Toyota
+Car Model: Prius
+Car Style: Two
+Base price: $20000.0
+Final price: $20825.0
+
+Colour
+-Mica-Blue: $100.0
+-Light-Green: $300.0
+
+Garage Door Transmitter
+-Yes: $0.0
+
+Power Moonroof
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+
+

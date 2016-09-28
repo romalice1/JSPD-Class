@@ -1,0 +1,21 @@
+Toyota
+Prius
+Two
+20000
+10
+10
+--option
+Color
+Mica-Blue 325
+Light-Green 300
+--option
+Garage Door Transmitter
+Yes 0
+--option
+Power Moonroof
+Yes 0
+--option
+Gear shift know trim
+metal-look 0
+chrome 0
+leather 200
