@@ -1,0 +1,125 @@
+/**
+ * @author Romalice Ishimwe
+ */
+
+package util;
+
+import java.io.*;
+import java.util.LinkedHashMap;
+import java.util.StringTokenizer;
+
+import Model.AutoConfig;
+
+public class AutoBuildFromFile {
+
+	 // Create AutoCongif from the file
+	public static LinkedHashMap<String, AutoConfig> buildAutoObject(String filename) 
+	{
+		/*** GETTING THE FILE READY ****/
+		// Check if file exist, if not, halt the system.
+		File f = new File(filename);
+		
+		FileReader file=null;
+		
+		AutoConfig auto = null; // Allocate object space
+		LinkedHashMap<String, AutoConfig> container = new LinkedHashMap<String, AutoConfig>(); // To hold the key and auto
+		
+		try
+		{
+			String line="";
+			
+			// Open file only if it exists, else find the correct file and use it
+			if(f.exists())
+			{
+				file = new FileReader(filename);
+			}else{
+				file = new FileReader("carConfigData.txt");
+			}
+				
+			BufferedReader buff = new BufferedReader(file);
+			
+			/****** START BUILDING AUTOCONFIG OBJECTS *******/
+			while( line != null)
+			{
+				line = buff.readLine();
+				if(line != null)
+				{
+					break;
+				}
+				if(line.equals("---AUTOMOBILE"))
+				{
+					// Create Automobile object
+			    	auto = new AutoConfig();
+					
+			    	// Read the first 4 lines (make, model, style, base price) respectively
+			    	auto.setMake(buff.readLine());
+					auto.setModel(buff.readLine());
+					auto.setStyle(buff.readLine());
+					// IF base price has nothing in data file, set it to 0.0
+					String basePrice = buff.readLine();
+					if(!basePrice.equalsIgnoreCase(""))
+					{
+						auto.setBasePrice(Double.parseDouble(basePrice));
+					}else{
+						auto.setBasePrice(0.0);
+					}
+					
+					// Automobile's map key
+					String autoMapKey = auto.getMake().toUpperCase()+"_"
+										+auto.getModel().toUpperCase()+"_"
+										+auto.getStyle().toUpperCase();
+					
+					// Read option sets and options
+					line = buff.readLine(); // Read next line
+					if(line.equalsIgnoreCase("--option") || line.equals("---AUTOMOBILE") )
+					{
+						while(line != null)
+						{
+							if( line.equals("---AUTOMOBILE"))
+							{
+								break;
+							}
+							line = buff.readLine();
+							String optionSetName = line;
+							auto.addOptionSet(optionSetName); 
+							// Start adding options to optionSets
+							while(line!=null)
+							{
+								if(line.equalsIgnoreCase("--option") || line.equals("---AUTOMOBILE"))
+								{
+									break;
+								}
+								// Read the next line to capture the option
+								line = buff.readLine();
+								if(line!=null)
+								{
+									if(line.equalsIgnoreCase("--option") || line.equals("---AUTOMOBILE"))
+									{
+										break;
+									}
+									// Tokenize the line 
+									StringTokenizer token = new StringTokenizer(line);
+									// Add option with arguments (optionSetName, optionName, price)
+									auto.addOption(optionSetName, token.nextToken(), Double.parseDouble(token.nextToken()));
+								}else
+								{
+									break;
+								}
+							}
+						}
+					}else
+					{}
+					
+					// Add objects to the ArrayList
+					container.put(autoMapKey, auto);
+				}
+			}
+			/*** DONE CREATING OBJECTS ***/
+			// Close the buffer
+			buff.close();
+		}catch(IOException e){
+			System.out.println("Error: "+e.toString());
+		}
+		return container;
+	}
+}

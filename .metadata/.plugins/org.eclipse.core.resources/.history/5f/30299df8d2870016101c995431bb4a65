@@ -1,0 +1,78 @@
+package adapter;
+
+import java.util.*;
+
+import Model.*;
+import util.AutoBuildFromFile;
+
+public abstract class ProxyAutomobile {
+	// A linked hash map of autoconfigs
+	private static LinkedHashMap<String, AutoConfig> configs = new LinkedHashMap<String, AutoConfig>();
+	
+	// Builds the automobile and adds it to the LinkedHashMap
+	public void buildAuto(String fileName)
+	{
+		// Create the autoConfig and return an arrayList with the key and autoConfig		
+		LinkedHashMap<String, AutoConfig> a = AutoBuildFromFile.buildAutoObject(fileName);
+		
+		configs = a;
+	}
+	// Prints the automobile given its Map key
+	public void printAuto(String autoKey) 
+	{
+		// find the car first
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).print();
+		}
+	}
+	public  void updateOptionSetName(String autoKey, String oldOptionSetName, String newOptionSetName) 
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).updateOptionSetName(oldOptionSetName, newOptionSetName);
+		}
+	}
+	public  void updateOptionPrice(String autoKey, String optionSetName, String optionName, double newPrice) 
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey.toUpperCase()).updateOptionPrice(optionSetName, optionName, newPrice);
+		}
+	}
+	
+	public void updateOptionName(String autoKey, String optionSetName, String oldOptionName, String newOptionName)
+	{
+		
+	}
+	// Delete optionSetName
+	public void deleteOptionSetName(String autoKey, String optionSetName)
+	{
+		
+	}
+	
+	// Delete optionPrice
+	public void deleteOptionPrice(String autoKey, String optionSetName, String optionName)
+	{
+		
+	}
+	
+	// Delete optionName
+	public void deleteOptionName(String autoKey, String optionSetName, String optionName)
+	{
+		
+	}
+	
+	// Find Auto - Static method.
+	private static boolean findAuto(String autoKey)
+	{
+		boolean b;
+		if(configs.get(autoKey) != null)
+		{
+			b = true;
+		}else{
+			b = false;
+		}
+		return b;
+	}
+}

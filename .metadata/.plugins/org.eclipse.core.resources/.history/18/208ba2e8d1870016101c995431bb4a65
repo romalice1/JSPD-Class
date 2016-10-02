@@ -1,0 +1,52 @@
+package scale;
+
+import adapter.AutoConfigAPI;
+
+public class EditOptions implements Runnable{
+	// Counters
+	int max=50;
+	int iterator =0;
+	
+	private static AutoConfigAPI auto;
+	
+	public EditOptions(AutoConfigAPI auto) {
+		EditOptions.auto = auto;
+	}
+	
+	// Update optionSetName
+	public void updateOptionSetName()
+	{
+		auto.updateOptionSetName("TOYOTA_PRIUS_TWO", "color", "Colour");
+	}
+	
+	// update optionPrice
+	public void updateOptionPrice()
+	{
+		auto.updateOptionPrice("TOYOTA_PRIUS_TWO", "color", "mica-blue", 100);
+	}
+	
+	// Update optionName
+	
+	// Delete optionSetName
+	
+	// Delete optionPrice
+	
+	// Delete optionName
+	
+	//public void editOption(){}
+	
+	@Override
+	public void run() 
+	{
+		while(iterator < max)
+		{
+			updateOptionSetName();
+			updateOptionPrice();
+			System.out.println(Thread.currentThread().getName().toUpperCase() + " SAYS: \n\n");
+			auto.printAuto("TOYOTA_PRIUS_TWO");
+		
+		iterator++;
+		}
+	}
+	
+}

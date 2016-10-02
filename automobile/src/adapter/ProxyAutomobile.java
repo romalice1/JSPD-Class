@@ -3,29 +3,87 @@ package adapter;
 import java.util.*;
 
 import Model.*;
-
 import util.AutoBuildFromFile;
 
 public abstract class ProxyAutomobile {
 	// A linked hash map of autoconfigs
 	private static LinkedHashMap<String, AutoConfig> configs = new LinkedHashMap<String, AutoConfig>();
+	
 	// Builds the automobile and adds it to the LinkedHashMap
-	public void buildAuto(String autoKey, String fileName) 
+	public void buildAuto(String fileName)
 	{
-		configs.put(autoKey, AutoBuildFromFile.buildAutoObject(fileName));
+		// Create the autoConfig and return an arrayList with the key and autoConfig		
+		LinkedHashMap<String, AutoConfig> autoConfigs = AutoBuildFromFile.buildAutoObject(fileName);
+		
+		configs = autoConfigs;
 	}
 	// Prints the automobile given its Map key
 	public void printAuto(String autoKey) 
 	{
-		// This key may crush if key is not found.
-		configs.get(autoKey).print();
+		// find the car first
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).print();
+		}
 	}
-	public void UpdateOptionSetName(String autoKey, String oldOptionSetName, String newOptionSetName) 
+	//Update optionSetName
+	public synchronized void updateOptionSetName(String autoKey, String oldOptionSetName, String newOptionSetName) 
 	{
-		configs.get(autoKey).updateOptionSetName(oldOptionSetName, newOptionSetName);
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).updateOptionSetName(oldOptionSetName, newOptionSetName);
+		}
 	}
-	public void UpdateOptionPrice(String autoKey, String optionSetName, String optionName, double newPrice) 
+	//Update optionPrice
+	public synchronized void updateOptionPrice(String autoKey, String optionSetName, String optionName, double newPrice) 
 	{
-		configs.get(autoKey).updateOptionPrice(optionSetName, optionName, newPrice);
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey.toUpperCase()).updateOptionPrice(optionSetName, optionName, newPrice);
+		}
+	}
+	// update optionName
+	public synchronized void updateOptionName(String autoKey, String optionSetName, String oldOptionName, String newOptionName)
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).updateOptionName(optionSetName, oldOptionName, newOptionName);
+		}
+	}
+	// Delete optionSetName
+	public synchronized void deleteOptionSet(String autoKey, String optionSetName)
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).deleteOptionSet(optionSetName);
+		}
+	}
+	
+	// Delete optionPrice
+	public synchronized void deleteOptionPrice(String autoKey, String optionSetName, String optionName)
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).deleteOptionPrice(optionSetName, optionName);
+		}
+	}
+	
+	// Delete optionName
+	public synchronized void deleteOption(String autoKey, String optionSetName, String optionName)
+	{
+		configs.get(autoKey).deleteOption(optionSetName, optionName);
+	}
+	
+	// Find Auto - Static method.
+	private synchronized static boolean findAuto(String autoKey)
+	{
+		boolean b;
+		if(configs.get(autoKey) != null)
+		{
+			b = true;
+		}else{
+			b = false;
+		}
+		return b;
 	}
 }

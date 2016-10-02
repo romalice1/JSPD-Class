@@ -1,20 +1,24 @@
 package Testing;
 
 import adapter.*;
+import scale.EditOptions;
 
 public class TestDriver2 {
 
-	public static void main(String[] args) 
+	public static void main(String[] args) throws InterruptedException 
 	{
-		AutoConfigAPI car1 = new AutoConfigAPI();
+		//Instantiating a createAuto object
+		AutoConfigAPI car = new AutoConfigAPI();
 		// BUILD AUTO
-		car1.buildAuto("toyotaPruisTwo", "prius.txt");
-		//UPDATING THE OPTION PRICE BY AUTO'S LINKEDHASHMAP KEY
-		car1.UpdateOptionPrice("toyotaPruisTwo", "color", "mica-blue", 100);
-		// DELETE OPTIONSET
-		car1.UpdateOptionSetName("toyotaPruisTwo", "color", "Colour");
-		// PRINT AUTO BY ITS LINKEDHASHMAP KEY
-		car1.printAuto("toyotaPruisTwo");
+		car.buildAuto("carConfig.txt");
 		
+		// Creating a thread instance
+		EditOptions thread1 = new EditOptions(car);
+		
+		// Start threads
+		new Thread(thread1, "2").start();
+		new Thread(thread1, "1").sleep(5000,52);
+		new Thread(thread1, "3").start();
+		car.printAuto("MAZDA_ZUMA_IPS");
 	}
 }

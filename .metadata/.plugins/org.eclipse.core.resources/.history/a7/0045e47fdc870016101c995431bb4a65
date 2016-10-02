@@ -1,0 +1,26 @@
+package Testing;
+
+import adapter.*;
+import scale.EditOptions;
+
+public class TestDriver2 {
+
+	public static void main(String[] args) 
+	{
+		//Instantiating a createAuto object
+		AutoConfigAPI car = new AutoConfigAPI();
+		// BUILD AUTO
+		car.buildAuto("carConfig.txt");
+		
+		// Creating a thread instance
+		EditOptions thread1 = new EditOptions(car);
+		/*EditOptions thread2 = new EditOptions(car);
+		EditOptions thread3 = new EditOptions(car);*/
+		
+		// Start threads
+		new Thread(thread1, "1").start();
+		new Thread(thread2, "2").start();
+		new Thread(thread3, "3").start();
+		//car.printAuto("TOYOTA_PRIUS_FOUR");
+	}
+}

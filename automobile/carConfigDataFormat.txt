@@ -1,0 +1,46 @@
+---AUTOMOBILE
+Make
+Model
+Style
+BasePrice
+--option
+optionName
+value1 price
+value2 price
+value2 price
+--option
+optionName
+value1 price
+value2 price
+value2 price
+---AUTOMOBILE
+Make
+Model
+Style
+BasePrice
+--option
+optionName
+value1 price
+value2 price
+value2 price
+--option
+optionName
+value1 price
+value2 price
+value2 price
+---AUTOMOBILE
+Make
+Model
+Style
+BasePrice
+--option
+optionName
+value1 price
+value2 price
+value2 price
+--option
+optionName
+value1 price
+value2 price
+value2 price
+---END

@@ -1,0 +1,24 @@
+package Testing;
+
+import adapter.*;
+import scale.EditOptions;
+
+public class TestDriver2 {
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+		//Instantiating a createAuto object
+		AutoConfigAPI car = new AutoConfigAPI();
+		// BUILD AUTO
+		car.buildAuto("carConfig.txt");
+		
+		// Creating a thread instance
+		EditOptions thread1 = new EditOptions(car);
+		
+		// Start threads
+		new Thread(thread1, "2").start();
+		new Thread(thread1, "1").sleep(5000,5662);
+		new Thread(thread1, "3").start();
+		car.printAuto("MAZDA_ZUMA_IPS");
+	}
+}

@@ -1,0 +1,58 @@
+package adapter;
+
+import java.util.*;
+
+import Model.*;
+
+import util.AutoBuildFromFile;
+
+public abstract class ProxyAutomobile {
+	// A linked hash map of autoconfigs
+	private static LinkedHashMap<String, AutoConfig> configs = new LinkedHashMap<String, AutoConfig>();
+	// Builds the automobile and adds it to the LinkedHashMap
+	public void buildAuto(String fileName) 
+	{
+		// Create the autoConfig and return an arrayList with the key and autoConfig
+		ArrayList<Object> a = AutoBuildFromFile.buildAutoObject(fileName);
+		
+		String autoKey = (String) a.get(0);
+		AutoConfig auto = (AutoConfig) a.get(1);
+		
+		configs.put(autoKey, auto);
+	}
+	// Prints the automobile given its Map key
+	public void printAuto(String autoKey) 
+	{
+		// find the car first
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).print();
+		}
+	}
+	public void UpdateOptionSetName(String autoKey, String oldOptionSetName, String newOptionSetName) 
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).updateOptionSetName(oldOptionSetName, newOptionSetName);
+		}
+	}
+	public void UpdateOptionPrice(String autoKey, String optionSetName, String optionName, double newPrice) 
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey.toUpperCase()).updateOptionPrice(optionSetName, optionName, newPrice);
+		}
+	}
+	// Find Auto - Static method.
+	private static boolean findAuto(String autoKey)
+	{
+		boolean b;
+		if(configs.get(autoKey) != null)
+		{
+			b = true;
+		}else{
+			b = false;
+		}
+		return b;
+	}
+}

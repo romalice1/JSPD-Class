@@ -1,0 +1,192 @@
+MULTITHREAD TEST RESULT
+-----------------------
+Both threadS (Cow and Chicken) are trying to modify the OptionSetName and below is what happens:
+************************************************************************************************
+-------------------------------------
+FIRST ATTEMPT:
+-------------------------------------
+
+
+Car Make: Toyota
+Car Model: Prius
+Car Style: Two
+Base price: $0.0
+COW SAYS: 
+
+
+Final price: $825.0
+
+Colour
+-Mica-Blue: $325.0
+-Light-Green: $300.0
+
+Exception in thread "Cow" Garage Door Transmitter
+-Yes: $0.0
+
+Power Moonroof
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:418)
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+Exception in thread "Chicken" java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:418)
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+---------------------------------------------
+SECOND ATTEMPT:
+---------------------------------------------
+
+Car Make: Toyota
+COW SAYS: 
+
+
+Car Model: Prius
+Car Style: Two
+Base price: $0.0
+Final price: $825.0
+
+Colour
+-Mica-Blue: $325.0
+-Light-Green: $300.0
+
+Garage Door Transmitter
+-Yes: $0.0
+
+Power Moonroof
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+Exception in thread "Cow" java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:418)
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+Exception in thread "Chicken" java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:418)
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+---------------------------------------------
+THIRD ATTEMPT:
+---------------------------------------------
+
+Car Make: Toyota
+COW SAYS: 
+
+
+CHICKEN SAYS: 
+
+
+Car Model: Prius
+Car Style: Two
+Base price: $0.0
+Exception in thread "Cow" Final price: $825.0
+java.lang.ArrayIndexOutOfBoundsException: -1
+Colour
+
+-Mica-Blue: $325.0	at java.util.ArrayList.elementData(ArrayList.java:418)
+-Light-Green: $300.0
+
+Garage Door Transmitter
+-Yes: $0.0
+
+Power Moonroof
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+Exception in thread "Chicken" java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:418)
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+
+---------------------------------------------
+FOURTH ATTEMPT:
+---------------------------------------------
+
+Exception in thread "Chicken" Exception in thread "Cow" COW SAYS: 
+
+
+Car Make: Toyota
+Car Model: Prius
+Car Style: Two
+Base price: $0.0
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:418)
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+	at scale.EditOptions.run(EditOptions.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+Final price: $825.0
+
+java.lang.ArrayIndexOutOfBoundsException: -1Colour
+
+	at java.util.ArrayList.elementData(ArrayList.java:418)-Mica-Blue:
+ $325.0
+-Light-Green: $300.0
+
+	at java.util.ArrayList.get(ArrayList.java:431)
+	at Model.AutoConfig.updateOptionSetName(AutoConfig.java:91)Garage Door Transmitter
+
+	at adapter.ProxyAutomobile.updateOptionSetName(ProxyAutomobile.java:36)
+-Yes:	at scale.EditOptions.updateOptionSetName(EditOptions.java:18)
+ $0.0
+	at scale.EditOptions.run(EditOptions.java:30)
+
+Power Moonroof	at java.lang.Thread.run(Thread.java:745)
+
+-Yes: $0.0
+
+Gear shift know trim
+-metal-look: $0.0
+-chrome: $0.0
+-leather: $200.0
+
+

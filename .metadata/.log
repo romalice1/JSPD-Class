@@ -307,3 +307,13 @@ org.eclipse.core.internal.resources.ResourceException: The project description f
 
 !ENTRY org.eclipse.core.resources 4 567 2016-09-27 15:51:10.001
 !MESSAGE The project description file (.project) for 'automobile' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SESSION 2016-09-29 22:13:20.220 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-09-29 22:13:35.335
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
