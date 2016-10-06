@@ -1,0 +1,20 @@
+package server;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class BuildCarModelOptions implements AutoServer
+{
+	/**
+	 * Accept a Properties object and create an AutoConfig. 
+	 * Then add that created AutoConfig to the LinkedHashMap.
+	 */
+	
+	// Creating a socket
+	ServerSocket socket = null;
+	
+	
+	// Accepting Property from Client
+	void handleSession() {
+	}
+}

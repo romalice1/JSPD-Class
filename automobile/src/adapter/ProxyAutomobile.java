@@ -3,7 +3,7 @@ package adapter;
 import java.util.*;
 
 import Model.*;
-import util.AutoBuildFromFile;
+import util.BuildAuto;
 
 public abstract class ProxyAutomobile {
 	// A linked hash map of autoconfigs
@@ -13,7 +13,7 @@ public abstract class ProxyAutomobile {
 	public void buildAuto(String fileName)
 	{
 		// Create the autoConfig and return an arrayList with the key and autoConfig		
-		LinkedHashMap<String, AutoConfig> autoConfigs = AutoBuildFromFile.buildAutoObject(fileName);
+		LinkedHashMap<String, AutoConfig> autoConfigs = BuildAuto.buildAutoObject(fileName);
 		
 		configs = autoConfigs;
 	}
@@ -26,6 +26,15 @@ public abstract class ProxyAutomobile {
 			configs.get(autoKey).print();
 		}
 	}
+	// update basePrice
+	public void updateBasePrice(String autoKey, double newBasePrice)
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).setBasePrice(newBasePrice);
+		}
+	}
+		
 	//Update optionSetName
 	public synchronized void updateOptionSetName(String autoKey, String oldOptionSetName, String newOptionSetName) 
 	{
@@ -71,7 +80,19 @@ public abstract class ProxyAutomobile {
 	// Delete optionName
 	public synchronized void deleteOption(String autoKey, String optionSetName, String optionName)
 	{
-		configs.get(autoKey).deleteOption(optionSetName, optionName);
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).deleteOption(optionSetName, optionName);
+		}
+	}
+	
+	// set option choice
+	public void setOptionChoice(String autoKey, String optionSetName, String optionName)
+	{
+		if(findAuto(autoKey) != false)
+		{
+			configs.get(autoKey).setOptionChoice(optionSetName, optionName);
+		}
 	}
 	
 	// Find Auto - Static method.

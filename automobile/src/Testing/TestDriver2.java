@@ -1,7 +1,6 @@
 package Testing;
 
 import adapter.*;
-import scale.EditOptions;
 
 public class TestDriver2 {
 
@@ -11,14 +10,7 @@ public class TestDriver2 {
 		AutoConfigAPI car = new AutoConfigAPI();
 		// BUILD AUTO
 		car.buildAuto("carConfig.txt");
-		
-		// Creating a thread instance
-		EditOptions thread1 = new EditOptions(car);
-		
-		// Start threads
-		new Thread(thread1, "2").start();
-		new Thread(thread1, "1").sleep(5000,52);
-		new Thread(thread1, "3").start();
+		car.updateBasePrice("MAZDA_ZUMA_IPS", 12000);
 		car.printAuto("MAZDA_ZUMA_IPS");
 	}
 }

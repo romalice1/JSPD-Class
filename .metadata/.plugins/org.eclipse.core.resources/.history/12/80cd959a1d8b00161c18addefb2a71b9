@@ -1,0 +1,153 @@
+package swing;
+
+
+import java.awt.*;  // import the AWT graphic classes
+import java.util.*; // import the utility classes
+import javax.swing.*;   // import the Swing classes
+import java.awt.event.*;    // import the Event classes
+
+/**
+ *  Faren2Cel is a GUI that converts from Farenheit to
+ *  Celsius or from Celsius to Farenheit.
+ *
+ *  @author Cathy Bishop
+ */
+
+public class Faren2Cel1 extends JApplet
+{
+
+JTextField  valueToConvert;
+JRadioButton    farenToCel;
+JRadioButton    celToFaren;
+JLabel      msg;
+
+public static void main(String args[])
+{
+    // Create a JFrame and get its content pane
+
+    JFrame      theFrame = new JFrame("Faren2Cel1 Application");
+    Container   c = theFrame.getContentPane();
+
+    // Instantiate the Applet
+
+    Faren2Cel1  theApplet = new Faren2Cel1();
+
+    // Set the size of the JFrame and the Applet
+
+    theFrame.setSize(550, 150);
+    theApplet.setSize(550, 150);
+
+    // Process a Window Closing Event using an anonomous inner class
+
+/*
+    theFrame.addWindowListener(
+        new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent event)
+            {
+                System.exit(0);
+            }
+        }
+        );
+*/
+    // or set the frame for close on exit
+
+    theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    // Call the Applet's init() and start() methods
+
+    theApplet.init();
+    theApplet.start();
+    
+    // Add the Applet to the frame
+
+    c.add(theApplet);
+
+    // Display the frame
+
+    // try uncommenting the next line
+//  theFrame.pack();
+    theFrame.show();
+}
+public void init ()
+{
+    
+
+    JButton     convertButton;
+    
+    JLabel      label1;
+    JLabel      label2;
+    JPanel      p1 = new JPanel();
+
+    p1.setLayout(new GridLayout(2, 2));
+
+    ButtonGroup     radioButtons = new ButtonGroup();
+
+    Container   c = getContentPane();
+
+    c.setBackground(Color.white);
+    c.setLayout(new FlowLayout());
+
+    valueToConvert = new JTextField(15);
+    valueToConvert.setBackground(Color.yellow);
+
+    msg = new JLabel("");
+
+    convertButton = new JButton(" CONVERT ");
+
+    msg = new JLabel("Convert Temperatures by Cathy Bishop!");
+    msg.setForeground(Color.blue);
+
+    label2 = new JLabel("Enter the value to convert: ");
+    label2.setForeground(Color.black);
+
+    farenToCel = new JRadioButton("Fahrenheit to Celsius", true);
+    celToFaren = new JRadioButton("Celsius to Fahrenheit", false);
+
+    radioButtons.add(farenToCel);
+    radioButtons.add(celToFaren);
+
+    p1.setBackground(Color.white);
+    farenToCel.setBackground(Color.white);
+    celToFaren.setBackground(Color.white);
+
+    c.add(msg);
+    p1.add(label2);
+    p1.add(valueToConvert);
+    p1.add(farenToCel);
+    p1.add(celToFaren);
+
+    c.add(p1);
+    c.add(convertButton);
+
+	ButtonListener btnListener = new ButtonListener();
+	convertButton.addActionListener(btnListener);
+}
+
+/**
+  * Convert the value entered by the user and display it in the JTextField.
+  *
+  */
+
+public static void convertToCelcius()
+{
+	double result;	
+	
+	//valueToConvert.getText();
+	
+	//result = (newValueToConvert-32) * (5/9);
+	//System.out.println("Celcius Degree: " + result);
+	System.out.println(valueToConvert.getText());
+}
+
+}
+/*****************************/
+class ButtonListener implements ActionListener
+{
+	public void actionPerformed(ActionEvent ae){
+		//System.out.println("Clicked");
+		Faren2Cel1.convertToCelcius();
+	}
+}
+
+

@@ -1,0 +1,11 @@
+package server;
+
+public class BuildCarModelOptions {
+	/**
+	 * Accept a Properties object and create an AutoConfig. 
+	 * Then add that created AutoConfig to the LinkedHashMap.
+	 * This method will be declared in the AutoServer interface.
+	 * The AutoServer interface should be implemented in BuildAuto 
+	 **and the BuildCarModelOptions class.
+	 */
+}

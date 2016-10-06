@@ -3,4 +3,7 @@
 <fullyQualifiedTypeName name="adapter.AutoConfigAPI"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="Model.OptionSet.Options"/>
+<fullyQualifiedTypeName name="server.AutoServer"/>
+<fullyQualifiedTypeName name="java.net.ServerSocket"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>

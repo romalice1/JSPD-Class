@@ -70,7 +70,7 @@ public class AutoConfig implements Serializable{
 	}
 	
 	// choose an option
-	public void chooseOption(String optionSetName, String optionName)
+	public void setOptionChoice(String optionSetName, String optionName)
 	{
 		int index = findOptionSet(optionSetName);
 		
@@ -312,8 +312,8 @@ public class AutoConfig implements Serializable{
 				System.out.print("-"+options.get(i).getOptions().get(j).getName()+":");
 				System.out.println(" $"+options.get(i).getOptions().get(j).getPrice());
 			}
-			String choice = getOptionChoice(options.get(i).getName());
-			System.out.println("CHOSEN: "+choice);
+			//String choice = getOptionChoice(options.get(i).getName());
+			//System.out.println("CHOSEN: "+choice);
 			System.out.println();
 		}
 	}
